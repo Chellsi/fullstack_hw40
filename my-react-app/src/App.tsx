@@ -1,21 +1,29 @@
 import './App.css'
 import { ControlledForm } from './components/ControlledForm'
 import { UncontrolledForm } from './components/UncontrolledForm'
+import { useState } from 'react'
+import { UsestateFetch } from './components/UsestateFetch'
 
 function App() {
+  const [isVisible, setIsVisible] = useState(false)
+
+  const handleClick = () => {
+    setIsVisible(!isVisible)
+  }
+
   return (
-    <div className='min-h-screen bg-gray-100 py-12'>
-      <div className='container mx-auto px-4'>
-        <div className='max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8'>
-          <div className='space-y-8'>
-            <ControlledForm />
-            <div className='border-t pt-8'>
-              <UncontrolledForm />
-            </div>
-          </div>
-        </div>
+    <>
+      <div className="flex flex-col gap-4 items-center justify-center bg-gray-100 p-4">
+        <button onClick={handleClick} className="bg-blue-500 rounded-md p-2">Change Status</button>
+        {isVisible && <ControlledForm/>}
       </div>
-    </div>
+      <div className="flex flex-col gap-4 items-center justify-center bg-gray-100 p-4">
+        <UncontrolledForm />
+      </div>
+      <div className="flex flex-col gap-4 items-center justify-center bg-gray-100 p-4">
+        <UsestateFetch />
+      </div>
+    </>
   )
 }
 

@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import '../App.css'
 
 export const UncontrolledForm = () => {
     const nameRef = useRef<HTMLInputElement>(null);
@@ -20,11 +21,11 @@ export const UncontrolledForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" name="name" ref={nameRef} />
-            <input type="email" name="email" ref={emailRef} />
-            <input type="text" name="message" ref={messageRef} />
-            <button type="submit">Submit</button>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <input type="text" name="name" ref={nameRef} placeholder="Name" className="border border-gray-300 rounded-md p-2" />
+            <input type="email" name="email" ref={emailRef} placeholder="Email" className="border border-gray-300 rounded-md p-2" />
+            <input type="text" name="message" ref={messageRef} placeholder="Message" className="border border-gray-300 rounded-md p-2" />
+            <button type="submit" className="bg-blue-500 rounded-md p-2">Submit</button>
         </form>
     )
 }
