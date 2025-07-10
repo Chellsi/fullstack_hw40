@@ -9,7 +9,7 @@ export const UsestateFetch = () => {
 
     useEffect(() => {
         if (isVisible) {
-        fetch('https://jsonplaceholder.typicode.com/posts')
+        fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
             .then(data => setData(data))
                 .catch(error => setError(error))
@@ -19,12 +19,12 @@ export const UsestateFetch = () => {
 
     return (
         <div>
-            <button onClick={() => setIsVisible(!isVisible)}>Show Data</button>
+            <button onClick={() => setIsVisible(!isVisible)}>Show Active Users</button>
             {isVisible && (
                 <>
                     {loading && <p>Loading...</p>}
                     {error && <p>Error: {error}</p>}
-                    {data && <p>{data.map((item: any) => item.title)}</p>}
+                    {data && data.map((item: any) => <div key={item.id}>{item.name}</div>)}
                 </>
             )}
         </div>

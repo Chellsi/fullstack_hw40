@@ -1,69 +1,51 @@
-# React + TypeScript + Vite
+# my-react-app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Це навчальний проект на React + TypeScript + Vite + TailwindCSS, який демонструє роботу з формами (контрольовані та неконтрольовані), а також отримання даних із сервера з обробкою станів завантаження та помилок.
 
-Currently, two official plugins are available:
+## Технології
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19**
+- **TypeScript**
+- **Vite**
+- **TailwindCSS**
+- **ESLint**
 
-## Expanding the ESLint configuration
+## Основний функціонал
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Контрольована форма** — демонструє роботу з керованим станом select.
+- **Неконтрольована форма** — приклад роботи з useRef для збору даних із полів вводу.
+- **Запит до API** — компонент UsestateFetch виконує запит до [JSONPlaceholder](https://jsonplaceholder.typicode.com/users) і відображає список користувачів з обробкою станів: завантаження, помилка, успіх.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Структура компонентів
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- `ControlledForm` — select зі статусами, керований через useState.
+- `UncontrolledForm` — форма з полями name, email, message, дані зчитуються через useRef.
+- `UsestateFetch` — кнопка для завантаження користувачів, відображає їх список.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Як запустити
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Встановіть залежності:
+   ```bash
+   npm install
+   ```
+2. Запустіть dev-сервер:
+   ```bash
+   npm run dev
+   ```
+3. Відкрийте [http://localhost:5173](http://localhost:5173) у браузері.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Налаштування стилів
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- TailwindCSS підключено через `@import "tailwindcss";` у `src/App.css`.
+- Додаткові стилі можна додавати у цей файл або використовувати утиліти Tailwind у класах компонентів.
+
+## Скрипти
+
+- `npm run dev` — запуск dev-сервера
+- `npm run build` — збірка проекту
+- `npm run lint` — перевірка коду ESLint
+- `npm run preview` — перегляд production-збірки
+
+## Ліцензія
+
+Проект створено для навчальних цілей.
